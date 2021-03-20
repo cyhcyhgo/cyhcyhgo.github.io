@@ -1,7 +1,7 @@
 # 扬华旅社
 
 **梦之队**
-[logo](https://cyhcyhgo.github.io/web_resourse/logo_small.jpg)
+![logo](https://cyhcyhgo.github.io/web_resourse/logo_small.jpg)
 
 ## 目录
 [第1部分：公司成员介绍](https://github.com/cyhcyhgo/cyhcyhgo.github.io/blob/main/README.md#公司成员介绍)

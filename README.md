@@ -2,7 +2,9 @@
 
 ![logo](https://cyhcyhgo.github.io/web_resourse/logo_small.jpg)
 
-**梦之队**
+## 梦之队
+
+**公司首页：**[点击此处](https://cyhcyhgo.github.io/)
 
 ## 目录
 [第1部分：公司成员介绍](https://github.com/cyhcyhgo/cyhcyhgo.github.io/blob/main/README.md#公司成员介绍)

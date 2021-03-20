@@ -25,7 +25,7 @@
 **计调部：吴旻**(学号：2020112460，github_id：[wumin2020](https://github.com/wumin2020))
 该成员负责搜集旅游资源，设计路线，核算报价，协调各部门工作。能够很好地协调部门工作，处理紧急情况。
 
-**导游：徐鸿境**(学号：2020112488，github_id：[xuhongjin-cell](https://github.com/xuhongjin-cell))
+**导游：徐鸿境**(学号：2020112488，github_id：[xuhongjing-cell](https://github.com/xuhongjing-cell))
 该成员拥有丰富的景点知识，对于四川的生活层面和社会层面的知识有较深了解，同时幽默风趣，能够生动形象却又不失准确的方式描述当地的风土人情。
 
 ## 各部门简介

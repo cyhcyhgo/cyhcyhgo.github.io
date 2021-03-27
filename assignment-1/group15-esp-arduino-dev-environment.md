@@ -1,16 +1,16 @@
 # esp32开发环境搭建日志
 
 ### 一. 下载Arduino IDE
-打开网站https://www.arduino.cc/en/software，下载相应版本的压缩文件，解压缩后便得到应用程序。
+打开网站https://www.arduino.cc/en/software ，下载相应版本的压缩文件，解压缩后便得到应用程序。
 
 ### 二. 配置开发环境
-1. 依次点击文件->首选项，在“附加开发板管理”一栏中输入https://codechina.csdn.net/mirrors/espressif/arduino-esp32/-/raw/gh-pages/package_esp32_index.json，点击右边按钮；
+1. 依次点击文件->首选项，在“附加开发板管理”一栏中输入https://codechina.csdn.net/mirrors/espressif/arduino-esp32/-/raw/gh-pages/package_esp32_index.json ，点击右边按钮；
 2. 点击工具->开发板->开发板管理器，搜索“esp”，下载esp32管理器；
 3. 在工具->开发板中选择“Node32s”；
 4. 重启软件。
 
 ### 三. 安装串口驱动程序
-1. 打开网站https://www.silabs.com/developers/usb-to-uart-bridge-vcp-drivers，下载相应版本的压缩文件；
+1. 打开网站https://www.silabs.com/developers/usb-to-uart-bridge-vcp-drivers ，下载相应版本的压缩文件；
 2. 解压缩，运行安装程序，按照相关指示完成安装；
 3. 使用数据线将开发板与电脑相连接，打开控制面板->设备管理器->端口，确认开发板是否与电脑连接，以及开发板所在的串口编号。
 

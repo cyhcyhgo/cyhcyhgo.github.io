@@ -50,7 +50,7 @@
 
 ## ·**三大物联网场景分析：**
 
-![image-20210321155839835](https://github.com/cyhcyhgo/cyhcyhgo.github.io/blob/main/assignment-1/image-20210321155839835.png)
+![image-20210321155839835](https://github.com/cyhcyhgo/cyhcyhgo.github.io/blob/main/assignment-1/resource/image-20210321155839835.png)
 
 ***LoRa受限无法支持***
 

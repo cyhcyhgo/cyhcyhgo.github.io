@@ -11,6 +11,7 @@
 ![temperature.jpg](https://github.com/cyhcyhgo/cyhcyhgo.github.io/blob/main/assignment-3/resources/temperature.jpg)
 
 最终成品如下：
+
 ![item.jpg](https://github.com/cyhcyhgo/cyhcyhgo.github.io/blob/main/assignment-3/resources/item.jpg)
 
 ### 三. 烧录代码
@@ -368,9 +369,11 @@ void mqttloop() {
 将节点和网关分别用数据线连接至电脑USB接口。打开串口监视器，波特率设置为115200。
 
 节点上传的数据为：
+
 ![node.png](https://github.com/cyhcyhgo/cyhcyhgo.github.io/blob/main/assignment-3/resources/node.png)
 
 网关上传的数据为：
+
 ![gateway.png](https://github.com/cyhcyhgo/cyhcyhgo.github.io/blob/main/assignment-3/resources/gateway.png)
 
 ### 五. 在手机上接收信息
@@ -381,6 +384,7 @@ void mqttloop() {
 可通过修改代码更改话题。
 
 接收的信息如下：
+
 ![MQTT.jpg](https://github.com/cyhcyhgo/cyhcyhgo.github.io/blob/main/assignment-3/resources/MQTT.jpg)
 
 ### 六. 在电脑网页接收信息

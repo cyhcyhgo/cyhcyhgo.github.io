@@ -6,9 +6,9 @@
 ### 二. 接线
 由于使用母对母杜邦线接线会导致模块连接不稳定，因此我们小组决定将所有模块插在面包板上，使用公对公杜邦线接线。
 其中ds18b02温度传感器的接线示意图如下：
-![temperature.jpg](https://github.com/cyhcyhgo/cyhcyhgo.github.io/blob/main/assignment- 3/resource/temperature.jpg)
+![temperature.jpg](https://github.com/cyhcyhgo/cyhcyhgo.github.io/blob/main/assignment-3/resource/temperature.jpg)
 最终成品如下：
-![item.jpg](https://github.com/cyhcyhgo/cyhcyhgo.github.io/blob/main/assignment- 3/resource/item.jpg)
+![item.jpg](https://github.com/cyhcyhgo/cyhcyhgo.github.io/blob/main/assignment-3/resource/item.jpg)
 
 ### 三. 烧录代码
 接有温度传感器的模块为节点部分，负责温度的检测与数据的发送，对应的代码为https://github.com/swjtu-maker/introduction2engineering/blob/master/LoRa_Node/LoRa_Node.ino。
@@ -355,22 +355,22 @@ void mqttloop() {
 ### 四. 通过串口监视器接收信息
 将节点和网关分别用数据线连接至电脑USB接口。打开串口监视器，波特率设置为115200。
 节点上传的数据为：
-![node.png](https://github.com/cyhcyhgo/cyhcyhgo.github.io/blob/main/assignment- 3/resource/node.png)
+![node.png](https://github.com/cyhcyhgo/cyhcyhgo.github.io/blob/main/assignment-3/resource/node.png)
 网关上传的数据为：
-![gateway.png](https://github.com/cyhcyhgo/cyhcyhgo.github.io/blob/main/assignment- 3/resource/gateway.png)
+![gateway.png](https://github.com/cyhcyhgo/cyhcyhgo.github.io/blob/main/assignment-3/resource/gateway.png)
 
 ### 五. 在手机上接收信息
 以手机为上位机。当网关连接至手机热点后，打开MQTT客户端，订阅如下两个话题：C2TLInTopic, C2TLOutTopic。
 前者用于向下位机发送信息，后者用于接收下位机的信息。
 可通过修改代码更改话题。
 接收的信息如下：
-![MQTT.jpg](https://github.com/cyhcyhgo/cyhcyhgo.github.io/blob/main/assignment- 3/resource/MQTT.jpg)
+![MQTT.jpg](https://github.com/cyhcyhgo/cyhcyhgo.github.io/blob/main/assignment-3/resource/MQTT.jpg)
 
 ### 六. 在电脑网页接收信息
 网关也可以向电脑网页发送信息。使网关、电脑连接至同一热点，电脑端打开broker.hivemq.com，一段时间后即可在网页上接收下位机发来的数据。
 可通过修改代码优化网页的显示。
 接收的信息如下：
-![web.png](https://github.com/cyhcyhgo/cyhcyhgo.github.io/blob/main/assignment- 3/resource/web.png)
+![web.png](https://github.com/cyhcyhgo/cyhcyhgo.github.io/blob/main/assignment-3/resource/web.png)
 
 # 遇到的问题及解决方法
 

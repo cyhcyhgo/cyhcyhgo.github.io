@@ -5,7 +5,9 @@
 
 ### 二. 接线
 由于使用母对母杜邦线接线会导致模块连接不稳定，因此我们小组决定将所有模块插在面包板上，使用公对公杜邦线接线。
+
 其中ds18b02温度传感器的接线示意图如下：
+
 ![temperature.jpg](https://github.com/cyhcyhgo/cyhcyhgo.github.io/blob/main/assignment-3/resources/temperature.jpg)
 最终成品如下：
 ![item.jpg](https://github.com/cyhcyhgo/cyhcyhgo.github.io/blob/main/assignment-3/resources/item.jpg)
@@ -13,7 +15,7 @@
 ### 三. 烧录代码
 接有温度传感器的模块为节点部分，负责温度的检测与数据的发送。
 由于示例代码使用的是MCP9701A测温模块，需要修改部分代码才可以使用。我们小组进行“本土化”翻译后的代码如下：
-'/*
+' /*
   LoRa Node With and DS18B02
   MCU：ESP32-S
   Lora: ai-tinker RA-02 sx1278 470 
@@ -103,10 +105,10 @@ void onSleep()
   LoRaNow.print(tmp);
   LoRaNow.print("℃");
   LoRaNow.send();
-}'
+} '
 
 没有温度传感器的模块为网关部分，负责接收节点的数据以及为上位机传输数据。我们小组将老师发布的代码进行优化后的代码如下：
-'/*
+' /*
   LoRaNow Simple Gateway with ESP32 setPins
   This code creates a webServer show the Message and use mqtt publish the data.
   created 27 04 2019
@@ -348,7 +350,7 @@ void mqttloop() {
 //    Serial.println(msg);
 //    mqttclient.publish("C2TLOutTopic", msg);
 //  }
-}'
+} '
 其中WiFi的SSID与密码应该修改为自己使用的WiFi。
 烧录完代码后，开启手机热点，待网关连接至热点后，即可正常工作。
 
@@ -386,11 +388,11 @@ void mqttloop() {
 1. 温度传感器接线不正确。参考网上的教程进行接线，其中中间的DQ接线柱接esp32模块的35号引脚（以代码为准）。注意确认温度传感器的正反，以免接错导线；
 2. 代码不正确。示例代码不适用于DS18B02温度传感器。需在网上查阅DS18B02温度传感器测量温度的代码并替换源代码当中的温度测量函数。
 
-#成功之处
+# 成功之处
 1. 成功完成接线并修正了代码，可以测量出正确的温度；
 2. 可以通过手机客户端和电脑网页获取数据；
 
-#还需要改进的地方
+# 还需要改进的地方
 1. 由于网关和节点在一个面包板上，无法进行远距离数据传输；
 2. 未使用OLED屏幕，无法通过下位机直接显示数据；
 3. 没有对模块进行封装，导致稳定性较差。

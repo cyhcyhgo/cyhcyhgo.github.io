@@ -18,7 +18,7 @@
 
 由于示例代码使用的是MCP9701A测温模块，需要修改部分代码才可以使用。我们小组进行“本土化”翻译后的代码如下：
 
-' /*
+" /*
   LoRa Node With and DS18B02
   MCU：ESP32-S
   Lora: ai-tinker RA-02 sx1278 470 
@@ -108,11 +108,11 @@ void onSleep()
   LoRaNow.print(tmp);
   LoRaNow.print("℃");
   LoRaNow.send();
-} '
+} "
 
 没有温度传感器的模块为网关部分，负责接收节点的数据以及为上位机传输数据。我们小组将老师发布的代码进行优化后的代码如下：
 
-' /*
+" /*
   LoRaNow Simple Gateway with ESP32 setPins
   This code creates a webServer show the Message and use mqtt publish the data.
   created 27 04 2019
@@ -354,7 +354,7 @@ void mqttloop() {
 //    Serial.println(msg);
 //    mqttclient.publish("C2TLOutTopic", msg);
 //  }
-} '
+} "
 
 其中WiFi的SSID与密码应该修改为自己使用的WiFi。
 

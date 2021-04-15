@@ -30,6 +30,8 @@
 */
 
 #include <LoRaNow.h>
+#include "SSD1306Wire.h"        
+SSD1306Wire display(0x3c, 27, 26);
 
 //vspi for lora radio module
 #define MISO 19
@@ -77,6 +79,9 @@ void setup() {
   LoRaNow.onMessage(onMessage);
   LoRaNow.onSleep(onSleep);
   LoRaNow.showStatus(Serial);
+  display.init();
+  display.flipScreenVertically();
+  display.setFont(ArialMT_Plain_10);
 }
 
 void loop() {
@@ -96,10 +101,17 @@ void onMessage(uint8_t *buffer, size_t size)
 
 void onSleep()
 {
+  display.clear();
   Serial.println("休息中...");
   Serial.print("现在的温度是：");
   Serial.print(tmp);
   Serial.println("℃");
+  display.setTextAlignment(TEXT_ALIGN_LEFT);
+  display.setFont(ArialMT_Plain_24);
+  display.drawString(0, 0, "Temperature:");
+  display.setFont(ArialMT_Plain_24);
+  display.drawString(0, 32, String(tmp)+"℃");
+  display.display();
   delay(5000); // "kind of a sleep"
   Serial.println("发送信息：");
   LoRaNow.print("信息编号");
@@ -130,6 +142,8 @@ void onSleep()
 #include <WebServer.h>
 #include <StreamString.h>
 #include <PubSubClient.h>
+#include "SSD1306Wire.h"        
+SSD1306Wire display(0x3c, 27, 26);
 
 //vspi
 //#define MISO 19
@@ -170,7 +184,6 @@ void handleRoot()
   str += "<style type=\"text/css\">body{background: url(https://img.zcool.cn/community/015ea357afda5f0000018c1b2f966d.jpg@1280w_1l_2o_100sh.jpg) repeat-x center top fixed}</style>";
   str += "<meta name='viewport' content='width=device-width, initial-scale=1'>";
   str += script;
-  str += "<link rel=\"SHORTCUT ICON\" href=\"https://cyhcyhgo.github.io/web_resourse/logo.jpg\">";
   str += "</head>";
   str += "<body onload='loop()'>";
   str += "<center>";
@@ -178,7 +191,7 @@ void handleRoot()
   str += "</center>";
   str += "</body>";
   str += "</html>";
-  server.send(400, "text/html", str);
+  server.send(200, "text/html", str);
 }
 
 static StreamString string;
@@ -264,7 +277,9 @@ void setup(void)
   //mqtt
   mqttclient.setServer(mqtt_server, 1883);
   mqttclient.setCallback(callback);
-
+  display.init();
+  display.flipScreenVertically();
+  display.setFont(ArialMT_Plain_10);
 }
 
 void loop(void)
@@ -276,18 +291,29 @@ void loop(void)
 
 void onMessage(uint8_t *buffer, size_t size)
 {
+  int i=35,j=0,k=0;
+  char tmp[6];
   unsigned long id = LoRaNow.id();
   byte count = LoRaNow.count();
-
+  display.clear();
   Serial.print("节点ID: ");
   Serial.println(id, HEX);
   Serial.print("接收次数: ");
   Serial.println(count);
   Serial.print("信息内容: ");
   Serial.write(buffer, size);
+  while ('0'>=buffer[i]||'9'<=buffer[i])i++;
+  j=i+5;
+  for(i;i<=j;i++,k++) tmp[k]=buffer[i];
+  tmp[k-1]='\0';
   Serial.println();
   Serial.println();
-  
+  display.setTextAlignment(TEXT_ALIGN_LEFT);
+  display.setFont(ArialMT_Plain_24);
+  display.drawString(0, 0, "Temperature:");
+  display.setFont(ArialMT_Plain_24);
+  display.drawString(0, 32, tmp);
+  display.display();
    //此处通过mqtt发送信息。
    snprintf (msg, MSG_BUFFER_SIZE, "#%d#%s", count,buffer);
    Serial.print("发布信息: ");
@@ -321,7 +347,7 @@ void onMessage(uint8_t *buffer, size_t size)
 void reconnect() {
   // Loop until we're reconnected
   while (!mqttclient.connected()) {
-    Serial.print("尝试与MQTT服务器进行连接");
+    Serial.println("尝试与MQTT服务器进行连接");
     // Create a random mqttclient ID
     String clientId = "ESP8266Client-";
     clientId += String(random(0xffff), HEX);
@@ -395,6 +421,13 @@ void mqttloop() {
 接收的信息如下：
 ![web.png](https://github.com/cyhcyhgo/cyhcyhgo.github.io/blob/main/assignment-3/resources/web.png)
 
+### 七. 通过OLED显示屏显示温度
+通过对OLED显示屏显示原理的学习，我组在原有代码的基础上添加了对OLED显示屏支持的代码。现在可以在网关和节点两个模块分别连接两块OLED显示屏，直接显示实时温度数据，而不需要借助电脑或手机等上位机显示数据。
+
+显示效果如下图：
+
+![scream.jpg](https://github.com/cyhcyhgo/cyhcyhgo.github.io/blob/main/assignment-3/resources/scream.jpg)
+
 # 遇到的问题及解决方法
 
 ### 一. esp32模块无法识别LoRa
@@ -411,10 +444,10 @@ void mqttloop() {
 
 # 成功之处
 1. 成功完成接线并修正了代码，可以测量出正确的温度；
-2. 可以通过手机客户端和电脑网页获取数据；
+2. 通过OLED显示屏直接显示温度；
+3. 可以通过手机客户端和电脑网页获取数据；
 
 # 还需要改进的地方
 1. 由于网关和节点在一个面包板上，无法进行远距离数据传输；
-2. 未使用OLED屏幕，无法通过下位机直接显示数据；
-3. 没有对模块进行封装，导致稳定性较差。
+2. 没有对模块进行封装，导致稳定性较差。
 
